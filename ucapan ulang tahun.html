@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: pop 1s ease;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      animation: fade 2s ease;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Balon */
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #ff6b6b, #f06595);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    .balloon1 { left: 20%; animation-delay: 0s; }
+    .balloon2 { left: 40%; animation-delay: 2s; }
+    .balloon3 { left: 60%; animation-delay: 4s; }
+    .balloon4 { left: 80%; animation-delay: 1s; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      50% { transform: translateY(50vh) rotate(10deg); }
+      100% { transform: translateY(-10vh) rotate(-10deg); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      top: 0;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="balloon balloon1"></div>
+  <div class="balloon balloon2"></div>
+  <div class="balloon balloon3"></div>
+  <div class="balloon balloon4"></div>
+
+  <h1>HALO, [AULIA RENSI NURAINI]! 🎉</h1>
+  <p>DI BACA YA PESAN DI BAWAH INI 😁✌️
+    happy birthday cantiiiiiiii iiiii gaaa kerasaaa yaaaaaa kamuuuu udahh tambah tuaaa aja hihihihi... cumannn mauu ngucapin happy birthday yaaaaaa.....semoga panjang umur sehat selalu patuh samaaa orang tuaaaaaaa pokokkk nyaaa doaa yanggg terbaik dehhh buattt kamuuuu.. sekarang kamuuuu udahhhhh bertambahh umurrr nyaaa berarrtiii apaaa? yaaa kamuu harussssss lebihhh dekattt kann diriii kamuuuuu kepadaaa allah oteyyy karnaaa kamuuu bukannn anakkk kecill lagiiiiii yaaaaaaa sayanggggggg... akuuu cumannn bisaaa ngucapinnn iniiii keee kamuuu maapp akuuuu gaaa bisaaa kasiii apaaa apaaa samaa kamuu maapp yahhhh pokokk nyaaa sekaliii lagii hbd sayanggg lopyuuuuuuuu banyakkk banyakkkk ❤️ -©DARI ARSIL YANG BAIK HATI😎</p>
+  <button id="playButton">🎵 Putar Musik</button>
+
+  <audio id="birthdayMusic">
+    <source src="https://files.catbox.moe/t0c88x.mp3" type="audio/mpeg">
+    Browsermu tidak mendukung pemutaran audio.
+  </audio>
+
+  <script>
+    // Button untuk memutar musik
+    const button = document.getElementById('playButton');
+    const music = document.getElementById('birthdayMusic');
+
+    button.addEventListener('click', () => {
+      music.play();
+      button.style.display = 'none'; // hilangkan button setelah diklik
+    });
+
+    // Confetti
+    const colors = ['#FFC700', '#FF0000', '#2E3192', '#41BBC7', '#FF6B6B'];
+    for(let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.width = Math.random() * 10 + 5 + 'px';
+      confetti.style.height = confetti.style.width;
+      confetti.style.animationDuration = 3 + Math.random() * 3 + 's';
+      document.body.appendChild(confetti);
+    }
+  </script>
+</body>
+</html>
